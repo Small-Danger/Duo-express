@@ -1,118 +1,370 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DUO EXPRESS</title>
-    <!-- Lien vers le CDN Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Lien vers Font Awesome -->
+    <title>DUO EXPRESS - Import-Export & Services Logistiques</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #002147;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        header nav {
+            margin-top: 20px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #00aaff;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+
+        }
+
+        .carousel .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            right: -100%;
+            animation: slide 10s infinite;
+        }
+
+        .carousel .active {
+            display: block;
+        }
+
+        @keyframes slide {
+            0% {
+                right: -100%;
+            }
+            20% {
+                right: 0%;
+            }
+            60% {
+                right: 0%;
+            }
+            80% {
+                right: -100%;
+            }
+            100% {
+                right: -100%;
+            }
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: space-around;
+            padding: 60px 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-item {
+            background: #fff;
+            width: 22%;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-item h3 {
+            margin: 20px 0;
+            color: #002147;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .service-item p {
+            padding: 0 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* About Us Section */
+        .about {
+            padding: 70px 20px;
+            background-color: #eeeeee;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #002147;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .about p {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        /* Social Section */
+        .social {
+            background-color: #002147;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .social ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .social ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        .social ul li a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social ul li a:hover {
+            color: #00aaff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #002147;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-item {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
-
-
-
-<!-- Header Section -->
-<header>
-    <h1>DUO EXPRESS</h1>
-    <p><i>Des frontières ouvertes & des opportunités infinies.</i></p>
-    <nav>
-        <a href="#services">
-            <button
-                style="padding: 5px 10px 5px 10px;background-color:#002147; border-color: white; border-radius: 50px; color : white">
-                <strong>Services</strong>
-            </button>
-        </a>
-        <a href="#about">
-            <button
-                style="padding: 5px 10px 5px 10px;background-color:#002147; border-color: white; border-radius: 50px; color : white">
-                <strong>À propos</strong>
-            </button>
-        </a>
-    </nav>
-</header>
-
 <body>
-    <!-- Section d'Accueil avec images défilantes -->
-    <section id="accueil" class="accueil">
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="img1.jpeg" alt="Importation par avion">
-                </div>
-                <div class="carousel-item">
-                    <img src="img2.jpeg" alt="Livraison de nourriture">
-                </div>
-                <div class="carousel-item">
-                    <img src="img3.jpg" alt="Échanges de devises">
-                </div>
-                <div class="carousel-item">
-                    <img src="img4.jpg" alt="Expéditions par bateau">
+
+    <!-- Header Section -->
+    <header>
+        <h1>DUO EXPRESS</h1>
+        <p><i>Solutions Logistiques et Services d'Import-Export</i></p>
+        <nav>
+            <a href="#services">
+                <button style="padding: 5px 10px 5px 10px;background-color:#002147; border-color: white; border-radius: 50px; color : white">
+                    <strong>Services</strong>
+                </button>
+            </a>
+            <a href="#about">
+                <button style="padding: 5px 10px 5px 10px;background-color:#002147; border-color: white; border-radius: 50px; color : white">
+                    <strong>À propos</strong>
+                </button>    
+            </a>
+            <a href="#social">
+                <button style="padding: 5px 10px 5px 10px;background-color:#002147; border-color: white; border-radius: 50px; color : white">
+                    <strong>Suivez-nous</strong>
+                </button> 
+            </a>
+        </nav>
+    </header>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DUO EXPRESS</title>
+        <!-- Lien vers le CDN Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Lien vers Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style>
+            /* Style général de la page */
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .carousel-item img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+            }
+            /* Section d'accueil */
+
+            /* Section services */
+            .services {
+                padding: 50px 0;
+                background-color: #f8f9fa;
+            }
+            .service-item {
+                transition: transform 0.3s ease-in-out;
+            }
+            .service-item:hover {
+                transform: scale(1.05);
+            }
+            .card-body h3 {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+            .card-body p {
+                font-size: 1rem;
+                color: #555;
+            }
+            .social ul {
+                padding-left: 0;
+                list-style: none;
+                display: flex;
+                justify-content: center;
+            }
+            .social ul li {
+                margin: 0 10px;
+            }
+            .social ul li a {
+                color: white;
+                font-size: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- Section d'Accueil avec images défilantes -->
+        <section id="accueil" class="accueil">
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img1.jpeg" alt="Importation par avion">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img2.jpeg" alt="Livraison de nourriture">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img3.jpg" alt="Échanges de devises">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img4.jpg" alt="Expéditions par bateau">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
+        <!-- Section des Services -->
+    
+        <!-- Lien vers les scripts Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+    
+
     <!-- Services Section -->
-    <section id="services" class="services">
-        <h2 class="text-center mb-5"><strong>Nos Services</strong></h2>
-        <div class="service-item">
-            <img src="impor-02.jpg" alt="Importation par avion">
-            <h3>Import & Export (Afrique)</h3>
-            <p style="text-align: justify;">Optimisez vos échanges avec nos services d'import-export fiables et rapides
-                !
-                Nous assurons le transport de vos marchandises par avion et par route vers des destinations clés comme
-                le
-                Burkina Faso, le Mali, le Sénégal, la Guinée Conakry, et la Côte d'Ivoire. Avec une expertise locale et
-                des
-                solutions sur mesure, nous garantissons un service sécurisé et efficace pour vos besoins commerciaux.
-            </p>
-        </div>
-        <div class="service-item">
-            <img src="exportbateau-02.jpg" alt="Livraison de nourriture">
-            <h3>Transport maritime</h3>
-            <p style="text-align: justify;">Nous vous proposons des services de transport maritime fiables entre le
-                Maroc et
-                la France. En partenariat avec une compagnie de navigation, nous assurons l'acheminement de vos
-                marchandises
-                en toute sécurité et dans les délais. Que ce soit pour des envois réguliers ou des besoins spécifiques,
-                nous
-                garantissons une solution économique et rapide.</p>
-        </div>
-        <div class="service-item">
-            <img src="exchange.jpg" alt="Échanges de devises">
-            <h3>Échanges de devises</h3>
-            <p style="text-align: justify;">Nous nous engageons à offrir un service d'échange de devises rapide,
-                efficace et
-                en grande quantité. Grâce à notre réactivité et notre expertise, nous assurons des transactions fluides
-                et
-                sécurisées, répondant aux besoins urgents et en volume de nos clients, que ce soit pour des échanges
-                ponctuels ou réguliers.</p>
-        </div>
-        <div class="service-item">
-            <img src="img4.jpg" alt="Expéditions par bateau">
-            <h3>Achat à l'international</h3>
-            <p style="text-align: justify;">DUO EXPRESS gère les achats pour les commerçants et les particuliers qui ne
-                sont
-                pas au Maroc. Nous nous occupons de la gestion complète du processus d'achat, assurant une solution
-                rapide
-                et efficace pour vos besoins. Si nécessaire, nous pouvons également organiser l'acheminement des
-                produits
-                jusqu'à leur destination, garantissant ainsi un service fluide et fiable.</p>
-        </div>
-    </section>
+<section id="services" class="services">
+    <h2 class="text-center mb-5">Nos Services</h2>
+    <div class="service-item">
+        <img src="image/avion.jpg" alt="Importation par avion">
+        <h3>Import & Export (Afrique)</h3>
+        <p style="text-align: justify;">Optimisez vos échanges avec nos services d'import-export fiables et rapides ! Nous assurons le transport de vos marchandises par avion et par route vers des destinations clés comme le Burkina Faso, le Mali, le Sénégal, la Guinée Conakry, et la Côte d'Ivoire. Avec une expertise locale et des solutions sur mesure, nous garantissons un service sécurisé et efficace pour vos besoins commerciaux.</p>
+    </div>
+    <div class="service-item">
+        <img src="exportbateau-02.jpg" alt="Livraison de nourriture">
+        <h3>Transport maritime</h3>
+        <p>Nous vous proposons des services de transport maritime fiables entre le Maroc et la France. En partenariat avec une compagnie de navigation, nous assurons l'acheminement de vos marchandises en toute sécurité et dans les délais. Que ce soit pour des envois réguliers ou des besoins spécifiques, nous garantissons une solution économique et rapide.</p>
+    </div>
+    <div class="service-item">
+        <img src="image/exchange.webp" alt="Échanges de devises">
+        <h3>Échanges de devises</h3>
+        <p>Facilitation des échanges de devises pour les entreprises et particuliers.</p>
+    </div>
+    <div class="service-item">
+        <img src="image/bateaux.webp" alt="Expéditions par bateau">
+        <h3>Expéditions par bateau</h3>
+        <p>Transport économique de marchandises entre le Maroc et la France.</p>
+    </div>
+    <div class="service-item">
+        <img src="image/achat-inter.webp" alt="Achat a l'internationnal">
+        <h3>Achat a l'internationnal
+        </h3>
+        <p>Transport économique de marchandises entre le Maroc et la France.</p>
+    </div>
+</section>
+
     <!-- About Us Section -->
     <section id="about" class="about">
         <h2>À Propos de DUO EXPRESS</h2>
-        <p>DUO EXPRESS est un leader dans le domaine de l'import-export, spécialisé dans le transport aérien, maritime
-            et
-            routier entre l'Afrique et le Maroc. Nous offrons des services d'expédition pour les entreprises et les
-            particuliers, ainsi que des solutions de logistique adaptées aux besoins spécifiques de nos clients. Nous
-            facilitons également les échanges de devises et offrons une livraison de nourriture africaine de qualité à
-            travers tout le Maroc.</p>
+        <p>DUO EXPRESS est un leader dans le domaine de l'import-export, spécialisé dans le transport aérien, maritime et routier entre l'Afrique et le Maroc. Nous offrons des services d'expédition pour les entreprises et les particuliers, ainsi que des solutions de logistique adaptées aux besoins spécifiques de nos clients. Nous facilitons également les échanges de devises et offrons une livraison de nourriture africaine de qualité à travers tout le Maroc.</p>
     </section>
 
+    <!-- Social Media Section -->
+    <section id="social" class="social">
+<br>
+<br>
+<br>
+<br><br><br><br><br><br><br><br>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -144,7 +396,20 @@
         <p>&copy; 2025 DUO EXPRESS</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let index = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            function showSlide() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[index].classList.add('active');
+                index = (index + 1) % slides.length;
+            }
+            
+            setInterval(showSlide, 3000);  // Change slide every 3 seconds
+        });
+    </script>
 
 </body>
 </html>
